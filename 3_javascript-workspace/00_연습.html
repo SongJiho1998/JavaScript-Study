@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>연습</title>
+    <style>
+        .area{
+            border: 1px solid black;
+            width: 400px;
+        }
+        .small{
+            height: 200px;
+        }
+        .big{
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h4>연습1</h4>
+
+    <div id = "AreaTest1" class = "area big"></div>
+
+    <button onclick = "AreaTestf1();"> 결과 확인</button>
+
+    <script>
+        function AreaTestf1(){
+
+            let AreaTest1 = document.querySelector("#AreaTest1");
+
+            let arr = ["안녕하세요","저는","송지호입니다."];
+
+            AreaTest1.innerHTML = "arr_[원본]결과 : " + arr + "<br>";
+            AreaTest1.innerHTML += "join사용 결과 : " + arr.join() + "<br>";
+            AreaTest1.innerHTML += ",없앤 후 결과 : " + arr.join(" ") + "<br>";
+
+        }
+    </script>
+
+    <br><br>
+    <hr>
+
+    <h4>연습2</h4>
+
+    <div id = "AreaTest2" class = "area big"></div>
+
+    <button onclick = "AreaTestf2();">결과 확인</button>
+
+    <script>
+        function AreaTestf2(){
+
+            let AreaTest2 = document.querySelector("#AreaTest2");
+
+            let arr = ["사과","복숭아","수박","바나나","포도","메론"];
+            let fruit = prompt("찾고자 하는 과일 이름을 입력해주세요");
+            let index = arr.indexOf(fruit);
+
+            AreaTest2.innerHTML = "arr_[배열] : " + arr + '<br>';
+
+            /*
+                [문제1] 
+                1) arr배열에 있는 과일들을 출력하시오.
+                2) arr배열에 있는 과일이 있으면
+                   "xxx과일은 arr배열 x번째 위치에 존재합니다." 출력
+                3) arr배열에 있는 과일이 없다면
+                   "xxx과일은 arr배열에 존재하지 않습니다." 출력
+            */
+
+            if(index == -1){
+                AreaTest2.innerHTML += fruit + "은(는) " + "arr배열에 존재하지 않습니다.";
+            }else{
+                AreaTest2.innerHTML += "arr배열 " + index + "번째 위치에 존재합니다.";
+            }
+
+        }
+    </script>
+
+
+
+</body>
+</html>

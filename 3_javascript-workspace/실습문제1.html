@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>실습문제1</title>
+    <style>
+        .area{
+            width: 750px;
+            border: 1px solid red;
+        }
+        #field{
+            width: 723px;
+
+        }
+        .small{
+            height: 200px;
+        }
+        .big{
+            height: 500px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>Practice1</h1>
+    
+    <form action = "">
+        <fieldset id = "field">
+            <legend>취미</legend>
+            <input type = "checkbox" id = "hobbyAll" onclick = "selectAll();"> <label for = "hobbyAll">전체선택</label>
+            <input type = "checkbox" id = "reusltcheck" name = "hobby" value = "종합" onclick = "singleCheck();"> <label for = "reusltcheck">종합</label>
+            <input type = "checkbox" id = "checkS" name = "hobby" value = "소설" onclick = "singleCheck();"> <label for = "checkS">소설</label>
+            <input type = "checkbox" id = "checkA" name = "hobby" value = "시/에세이" onclick = "singleCheck();"> <label for = "checkA">시/에세이</label>
+            <input type = "checkbox" id = "checkG" name = "hobby" value = "경제/경영" onclick = "singleCheck();"> <label for = "checkG">경제/경영</label>
+            <input type = "checkbox" id = "checkJ" name = "hobby" value = "자기계발" onclick = "singleCheck();"> <label for = "checkJ">자기계발</label>
+            <input type = "checkbox" id = "checkC" name = "hobby" value = "아동" onclick = "singleCheck();"> <label for = "checkC">아동</label><br>
+            <input type = "checkbox" id = "checkK" name = "hobby" value = "여행" onclick = "singleCheck();"> <label for = "checkK">여행</label>
+            <input type = "checkbox" id = "checkSS" name = "hobby" value = "과학" onclick = "singleCheck();"> <label for = "checkSS">과학</label>
+            <input type = "checkbox" id = "checkE" name = "hobby" value = "역사/문학" onclick = "singleCheck();"> <label for = "checkE">역사/문화</label>
+            <input type = "checkbox" id = "checkEE" name = "hobby" value = "외국어" onclick = "singleCheck();"> <label for = "checkEE">외국어</label>
+            <input type = "checkbox" id = "checkCP" name = "hobby" value = "컴퓨터" onclick = "singleCheck();"> <label for = "checkCP">컴퓨터</label>
+            <input type = "checkbox" id = "checkM" name = "hobby" value = "만화" onclick = "singleCheck();"> <label for = "checkM">만화</label>
+        </fieldset>
+    </form>
+    <br>
+
+    <button onclick = "showCheckedHobby();">카테고리 선택</button>
+    <div id = "area" class = "area small"></div>
+
+    <script>
+        /*
+            리팩토링 : 개발자가 소스코드를 효율적으로 관리하기위해 , 작업을 완료하고
+                      난 후 다듬는 행위.
+        */
+
+        const HOBBYALL = document.querySelector("#hobbyAll");
+        const hobbys = document.querySelectorAll("[name='hobby']");
+
+        function selectAll(){
+            // let hobbyAll = HOBBYALL;
+            // let hobbys = document.getElementsByName("hobby"); == document.querySelectorAll("[name='hobby']");
+
+            for(let i = 0; i < hobbys.length; i++){
+                hobbys[i].checked = HOBBYALL.checked;
+            } 
+        }
+
+        function singleCheck(){
+            let total = hobbys.length; // 12
+            let checkedHobbys = document.querySelectorAll("[name='hobby']:checked").length; // ?
+
+            if(total == checkedHobbys){
+                HOBBYALL.checked = true;
+            }else{
+                HOBBYALL.checked = false;
+            }
+        }
+
+        function showCheckedHobby(){
+            let area = document.getElementById("area");
+            let hobbys = document.querySelectorAll("[name='hobby']:checked");
+
+            // area.innerHTML = ""; // 덮어씌우기
+
+            // console.log(hobbys , []);
+
+            // // join
+            // hobbys.join("");
+
+            // hobbys.forEach(function(item){
+            //     console.log(item);
+            // })
+            for(let i = 0; i < hobbys.length; i++){
+                area.innerHTML += hobbys[i].value + " ";
+            }
+
+        }
+    </script>
+
+
+</body>
+</html>
